@@ -1,0 +1,135 @@
+/* Zona Gemelos VIP · landings del lanzamiento (A · B · C · D). Marca sacada de zonagemelosvip.com:
+   negro + champán, Geist, titulares en 900 con tracking ancho, rojo solo para «en directo» y la cuenta atrás. */
+:root{
+  --negro:#000;--carbon:#0B0A08;--panel:#12100C;--linea:rgba(199,179,141,.18);--linea-2:rgba(199,179,141,.32);
+  --champan:#C7B38D;--oro:#8C724C;--oro-osc:#493B25;--rojo:#EF4444;--blanco:#F4EFE6;--gris:#A39C90;--gris-2:#6E685E;
+  --radio:18px;--max:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html,body{overflow-x:hidden}
+body{background:var(--negro);color:var(--blanco);font-family:'Geist',system-ui,sans-serif;font-size:17px;line-height:1.55;
+  background-image:radial-gradient(circle at top,rgba(199,179,141,.18),transparent 34%);background-repeat:no-repeat;min-height:100vh}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 20px}
+.estrecho{max-width:760px}
+
+/* cabecera */
+.top{display:flex;justify-content:center;padding:28px 0 8px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;font-size:13px;color:var(--champan)}
+.logo img{width:34px;height:34px}
+
+/* insignia del evento */
+.badge{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;border:1px solid var(--linea-2);border-radius:999px;
+  padding:8px 16px;font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--champan);background:rgba(199,179,141,.05)}
+.badge .sep{width:1px;height:12px;background:var(--linea-2)}
+.punto{width:8px;height:8px;border-radius:50%;background:var(--rojo);box-shadow:0 0 0 0 rgba(239,68,68,.6);animation:latido 1.8s infinite}
+@keyframes latido{0%{box-shadow:0 0 0 0 rgba(239,68,68,.55)}70%{box-shadow:0 0 0 10px rgba(239,68,68,0)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
+
+/* titulares */
+.hero{text-align:center;padding:26px 0 8px}
+h1{font-weight:900;text-transform:uppercase;letter-spacing:.02em;line-height:1.04;font-size:clamp(34px,6.2vw,64px);margin:22px auto 18px;max-width:980px}
+h1 em,h2 em{font-style:normal;color:var(--champan)}
+.sub{color:var(--gris);font-size:clamp(17px,2.1vw,20px);max-width:720px;margin:0 auto}
+.sub b{color:var(--blanco);font-weight:600}
+h2{font-weight:900;text-transform:uppercase;letter-spacing:.03em;line-height:1.08;font-size:clamp(26px,4vw,40px);text-align:center;margin-bottom:12px}
+.kicker{font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--champan);text-align:center;margin-bottom:12px}
+.lead{color:var(--gris);text-align:center;max-width:640px;margin:0 auto 34px}
+section{padding:72px 0}
+.raya{height:1px;background:linear-gradient(90deg,transparent,var(--linea-2),transparent);margin:0 auto;max-width:var(--max)}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;font-family:inherit;font-weight:800;
+  text-transform:uppercase;letter-spacing:.12em;font-size:15px;color:#1A140A;background:linear-gradient(180deg,#E2D2B0,var(--champan));
+  padding:19px 30px;border-radius:12px;text-decoration:none;box-shadow:0 10px 40px -10px rgba(199,179,141,.55);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 14px 46px -10px rgba(199,179,141,.75)}
+.btn.ancho{width:100%}
+.btn svg{width:18px;height:18px}
+.chips{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:18px;color:var(--gris);font-size:14px}
+.chips span{display:inline-flex;align-items:center;gap:7px}
+.chips span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--champan)}
+
+/* formulario */
+.form{display:grid;gap:12px;text-align:left}
+.fila{display:grid;grid-template-columns:118px 1fr;gap:10px}
+.campo{width:100%;background:#0E0D0A;border:1px solid var(--linea-2);border-radius:12px;color:var(--blanco);font:inherit;font-size:16px;padding:16px 14px;outline:none}
+.campo:focus{border-color:var(--champan);box-shadow:0 0 0 3px rgba(199,179,141,.15)}
+.campo::placeholder{color:var(--gris-2)}
+select.campo{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--champan) 50%),linear-gradient(135deg,var(--champan) 50%,transparent 50%);
+  background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:30px}
+.canal{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.canal label{display:flex;align-items:center;justify-content:center;gap:9px;border:1px solid var(--linea-2);border-radius:12px;padding:14px;cursor:pointer;font-weight:600;font-size:15px;color:var(--gris);transition:.15s}
+.canal input{position:absolute;opacity:0;pointer-events:none}
+.canal label:has(input:checked){border-color:var(--champan);color:var(--blanco);background:rgba(199,179,141,.08)}
+.canal svg{width:20px;height:20px}
+.pie-form{font-size:12.5px;color:var(--gris-2);text-align:center;line-height:1.45}
+.pie-form a{color:var(--gris)}
+.error{color:#F7A0A0;font-size:13.5px;min-height:0}
+.form-titulo{font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:15px;text-align:center;margin-bottom:4px}
+
+/* tarjetas */
+.rejilla{display:grid;gap:16px}
+@media(min-width:820px){.rejilla.tres{grid-template-columns:repeat(3,1fr)}.rejilla.dos{grid-template-columns:repeat(2,1fr)}.rejilla.cuatro{grid-template-columns:repeat(4,1fr)}}
+.card{background:linear-gradient(180deg,rgba(199,179,141,.06),rgba(199,179,141,.015));border:1px solid var(--linea);border-radius:var(--radio);padding:26px}
+.card .n{font-family:'Geist Mono',monospace;color:var(--champan);font-size:13px;letter-spacing:.14em;margin-bottom:14px}
+.card h3{font-size:19px;font-weight:800;line-height:1.25;margin-bottom:8px}
+.card p{color:var(--gris);font-size:15.5px}
+.lista{list-style:none;display:grid;gap:12px}
+.lista li{position:relative;padding-left:30px;color:var(--gris)}
+.lista li::before{content:"";position:absolute;left:0;top:4px;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--champan);
+  background:radial-gradient(circle,var(--champan) 35%,transparent 40%)}
+.lista li b{color:var(--blanco);font-weight:600}
+.grupo h3{font-size:14px;font-family:'Geist Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--champan);margin-bottom:16px}
+
+/* ficha del evento */
+.ficha{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:var(--radio);overflow:hidden}
+@media(min-width:820px){.ficha{grid-template-columns:repeat(4,1fr)}}
+.ficha div{background:var(--carbon);padding:18px 16px;text-align:center}
+.ficha small{display:block;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gris-2);margin-bottom:6px}
+.ficha strong{font-weight:700;font-size:16px}
+
+/* prueba social */
+.casos{display:grid;gap:16px}
+@media(min-width:1100px){.casos{grid-template-columns:1fr 1fr}}
+.caso{display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:18px;align-items:center;background:var(--panel);border:1px solid var(--linea);border-radius:var(--radio);padding:20px}
+.caso>div{min-width:0}
+.caso .fig{font-weight:900;font-size:clamp(32px,3.4vw,44px);color:var(--champan);line-height:1}
+.caso .fig small{display:block;margin-top:6px}
+.caso .fig small{font-size:.42em;color:var(--gris);font-weight:600}
+.caso p{color:var(--gris);font-size:14.5px;margin-top:10px}
+.caso video{width:200px;aspect-ratio:9/16;object-fit:cover;border-radius:12px;background:#000;cursor:pointer}
+@media(max-width:520px){.caso{grid-template-columns:1fr}.caso video{width:100%;max-height:520px}}
+.muro{columns:2;column-gap:12px}
+@media(min-width:820px){.muro{columns:4}}
+.muro img{width:100%;border-radius:12px;border:1px solid var(--linea);margin-bottom:12px;break-inside:avoid}
+.aviso{font-size:12.5px;color:var(--gris-2);text-align:center;max-width:640px;margin:18px auto 0}
+
+/* los Gemelos */
+.autor{display:grid;gap:26px;align-items:center}
+@media(min-width:820px){.autor{grid-template-columns:320px 1fr}}
+.foto{aspect-ratio:4/5;border-radius:var(--radio);border:1px dashed var(--linea-2);display:grid;place-items:center;text-align:center;color:var(--gris-2);
+  font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:20px;background:var(--panel)}
+
+/* pendiente: se ve en la vista previa y se quita antes de publicar */
+.pend{display:inline-block;background:#3A2E12;color:#F2D58A;border:1px dashed #A8873A;border-radius:6px;font-family:'Geist Mono',monospace;
+  font-size:11px;letter-spacing:.06em;padding:2px 7px;vertical-align:middle;text-transform:none;font-weight:500}
+body.publicar .pend{display:none}
+
+/* cuenta atrás */
+.reloj{display:flex;gap:10px;justify-content:center}
+.reloj div{min-width:66px;background:#0E0D0A;border:1px solid var(--linea-2);border-radius:12px;padding:10px 6px;text-align:center}
+.reloj b{display:block;font-weight:900;font-size:28px;line-height:1;font-variant-numeric:tabular-nums}
+.reloj small{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.16em;color:var(--gris-2);text-transform:uppercase}
+
+/* modal (variante A) */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
+.modal.abierto{display:flex}
+.modal .caja{width:100%;max-width:460px;background:var(--carbon);border:1px solid var(--linea-2);border-radius:20px;padding:28px 22px;position:relative}
+.cerrar{position:absolute;top:10px;right:12px;background:none;border:0;color:var(--gris);font-size:26px;cursor:pointer;line-height:1}
+
+/* pie */
+footer{padding:40px 0 60px;text-align:center;color:var(--gris-2);font-size:13px}
+footer a{color:var(--gris-2);margin:0 6px}
+.fijo-movil{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(0deg,#000 60%,transparent);z-index:20;display:none}
+@media(max-width:820px){.fijo-movil.si{display:block}}

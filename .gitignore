@@ -1,2 +1,11 @@
 .vercel
 .env*
+# El repo lleva SOLO la landing de la raíz (index.html + gracias/ + assets/). Lo demás se queda en local:
+a/
+b/
+c/
+d/
+e/
+variantes.html
+construir.py
+NOTAS.md

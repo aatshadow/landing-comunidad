@@ -1,17 +1,28 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Zona Gemelos VIP · Landings A B C D E</title><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;800;900&family=Geist+Mono&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/zg.css"><link rel="icon" href="assets/media/g.png"></head><body>
-<header class="top"><div class="logo"><img src="assets/media/g.png" alt="">Zona Gemelos VIP</div></header>
-<main><div class="wrap"><div class="hero"><p class="kicker">Vista previa · A/B/C/D + puente E</p><h1 style="font-size:clamp(30px,5vw,52px)">Landings de la <em>comunidad</em></h1>
-<p class="sub">Un solo mensaje en las cuatro: entra en la comunidad de WhatsApp, dentro anunciamos algo. Sin producto. Cambia solo la estructura.</p></div>
-<div class="rejilla dos" style="margin-top:34px"><div class="card"><div class="n">A · Larga</div><h3>Estructura de: MKT Hackers A</h3><p>Botón que abre el formulario en un popup, qué hay dentro, quiénes somos, preguntas, y un botón entre cada bloque. Para tráfico frío (descripción de YouTube).</p>
-<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><a class="btn" style="padding:12px 16px;font-size:12px" href="a/">Ver landing</a>
-<a class="btn" style="padding:12px 16px;font-size:12px;background:transparent;color:var(--champan);border:1px solid var(--linea-2);box-shadow:none" href="a/gracias/">Su página de gracias</a></div></div><div class="card"><div class="n">B · Formulario arriba</div><h3>Estructura de: MKT Hackers B</h3><p>El formulario en la primera pantalla, ficha (gratis · WhatsApp · 25 de octubre), qué hay dentro y quiénes somos. Para tráfico mixto.</p>
-<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><a class="btn" style="padding:12px 16px;font-size:12px" href="b/">Ver landing</a>
-<a class="btn" style="padding:12px 16px;font-size:12px;background:transparent;color:var(--champan);border:1px solid var(--linea-2);box-shadow:none" href="b/gracias/">Su página de gracias</a></div></div><div class="card"><div class="n">C · Titular + formulario</div><h3>Estructura de: Iman Gadzhi · AI Income Challenge</h3><p>Sin vídeo de momento: titular y formulario al lado, qué hay dentro. Para quien llega desde un vídeo.</p>
-<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><a class="btn" style="padding:12px 16px;font-size:12px" href="c/">Ver landing</a>
-<a class="btn" style="padding:12px 16px;font-size:12px;background:transparent;color:var(--champan);border:1px solid var(--linea-2);box-shadow:none" href="c/gracias/">Su página de gracias</a></div></div><div class="card"><div class="n">D · Exprés</div><h3>Estructura de: MKT Hackers D</h3><p>Una sola pantalla: titular, cuenta atrás al anuncio y formulario. Para tráfico caliente (base, stories, ManyChat).</p>
-<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><a class="btn" style="padding:12px 16px;font-size:12px" href="d/">Ver landing</a>
-<a class="btn" style="padding:12px 16px;font-size:12px;background:transparent;color:var(--champan);border:1px solid var(--linea-2);box-shadow:none" href="d/gracias/">Su página de gracias</a></div></div></div>
-<p class="aviso" style="margin-top:30px">Las etiquetas amarillas ⇢ marcan lo que falta (foto, vídeos, enlace de WhatsApp). Se ocultan con <b>?publicar=1</b>. Sin <code>webhook</code> en <code>assets/zg.js</code> el formulario no envía nada: guarda en el navegador y salta a la página de gracias.</p>
-</div></main></body></html>
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Zona Gemelos VIP · Nueva comunidad</title><meta name="description" content="Zona Gemelos VIP · comunidad gratuita de WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/zg.css"><link rel="icon" href="assets/media/g.png"></head>
+<body data-variante="L"><header class="top"><div class="logo"><img src="assets/media/g.png" alt="">Zona Gemelos VIP</div></header>
+<main><div class="wrap hero estrecho">
+  <div class="badge"><span class="punto"></span>Comunidad gratuita de WhatsApp</div>
+  <h1>Los Gemelos hemos creado una <em>nueva comunidad</em></h1>
+  <p class="sub">Vamos a lanzar algo <b>súper grande</b> a finales de octubre, y lo contamos primero ahí dentro. No te lo pierdas.</p>
+  <div style="max-width:460px;margin:30px auto 0"><a href="#" class="btn ancho" data-abre>Entrar en la comunidad <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+  <div class="chips"><span>Gratis</span><span>Por WhatsApp</span><span>Te sales cuando quieras</span></div>
+</div></main>
+<div class="modal" role="dialog" aria-modal="true"><div class="caja"><button class="cerrar" aria-label="Cerrar">×</button>
+  <p class="kicker">Comunidad gratuita</p><form class="form" novalidate><p class="form-titulo">Entra en la comunidad de WhatsApp</p>
+  <input class="campo" type="text" name="nombre" placeholder="Tu nombre" autocomplete="given-name" aria-label="Nombre">
+  <div class="fila"><select class="campo" name="prefijo" aria-label="Prefijo"></select>
+  <input class="campo" type="tel" name="telefono" placeholder="Número SIN el prefijo" autocomplete="tel-national" inputmode="tel" aria-label="Teléfono"></div>
+  <input class="campo" type="email" name="email" placeholder="Pon un mail y confirma que no eres un bot" autocomplete="email" aria-label="Email">
+  <select class="campo" name="conoce" aria-label="¿Desde cuándo nos conoces?"><option value="" selected disabled>¿Desde cuándo nos conoces?</option><option>Os acabo de conocer</option><option>Menos de 6 meses</option><option>Entre 6 meses y 1 año</option><option>Más de 1 año</option><option>Desde el principio</option></select>
+  <select class="campo" name="dedica" aria-label="¿A qué te dedicas hoy?"><option value="" selected disabled>¿A qué te dedicas hoy?</option><option>Trabajo por cuenta ajena</option><option>Autónomo o tengo un negocio</option><option>Estudio</option><option>Estoy buscando trabajo</option><option>Otra cosa</option></select>
+  <div class="error" role="alert"></div>
+  <button class="btn ancho" type="submit">Entrar gratis en la comunidad <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></button>
+  <p class="pie-form">Gratis y sin spam. Al registrarte aceptas la <a href="https://zonagemelosvip.com" target="_blank" rel="noopener">política de privacidad</a>.</p>
+</form></div></div>
+<div class="fijo-movil si"><a href="#" class="btn ancho" data-abre>Entrar en la comunidad <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div><footer><div class="wrap">Zona Gemelos VIP © 2026 · <a href="https://zonagemelosvip.com" target="_blank" rel="noopener">Aviso legal</a>·<a href="https://zonagemelosvip.com" target="_blank" rel="noopener">Privacidad</a>·<a href="https://zonagemelosvip.com" target="_blank" rel="noopener">Cookies</a></div></footer>
+<script src="assets/zg.js"></script></body></html>

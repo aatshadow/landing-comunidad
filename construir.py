@@ -8,6 +8,7 @@ Cada variante calca la ESTRUCTURA de una referencia (MKT Hackers A/B/D · Iman G
 from pathlib import Path
 
 R = Path(__file__).parent
+VIDEOS = False  # Alex, 05-10: sin vídeos en las landings «hasta próximo aviso» (vídeo de la C, de las gracias y la E entera)
 P = lambda t: f'<span class="pend">⇢ {t}</span>'   # pendiente: visible en la vista previa, oculto con ?publicar=1
 
 HEAD = lambda titulo, v, extra='': f'''<!doctype html>
@@ -101,10 +102,11 @@ B = HEAD('Zona Gemelos VIP · B', 'B') + LOGO + f'''
 {DENTRO}{BANDA('baja')}<div class="raya"></div>{GEMELOS}{BANDA('baja')}</main>''' + PIE
 
 # ───────────────────────── C · VÍDEO ARRIBA (estructura de Iman Gadzhi · AI Income Challenge) ─────────────────────────
+PORTADA_C = '''  <div class="portada" style="margin-top:14px"><div class="play"><svg viewBox="0 0 24 24" fill="#1A140A"><path d="M6 4l14 8-14 8z"/></svg></div>
+    <div class="rotulo">' + P('vídeo de 30-60 s de los dos Gemelos a cámara: «algo grande llega, solo lo anunciamos dentro, entra» (por grabar)') + '</div></div>'''
 C = HEAD('Zona Gemelos VIP · C', 'C', '<style>.portada{position:relative;aspect-ratio:16/9;border-radius:22px;overflow:hidden;border:1px solid var(--linea-2);background:radial-gradient(circle at 30% 20%,rgba(199,179,141,.22),transparent 55%),#0B0A08;display:grid;place-items:center}.portada .play{width:84px;height:84px;border-radius:50%;background:var(--champan);display:grid;place-items:center;box-shadow:0 0 0 12px rgba(199,179,141,.15)}.portada .play svg{width:30px;height:30px;margin-left:5px}.portada .rotulo{position:absolute;left:18px;bottom:16px;right:18px;text-align:left}.c-grid{display:grid;gap:28px;align-items:center;padding:20px 0 10px}@media(min-width:900px){.c-grid{grid-template-columns:1.15fr .85fr}.c-grid .hero{text-align:left}.c-grid .chips{justify-content:flex-start}.c-grid h1{font-size:clamp(30px,3.6vw,46px);margin-left:0}.c-grid .sub{margin:0}}</style>') + LOGO + f'''
 <main><div class="wrap">
-  <div class="portada" style="margin-top:14px"><div class="play"><svg viewBox="0 0 24 24" fill="#1A140A"><path d="M6 4l14 8-14 8z"/></svg></div>
-    <div class="rotulo">{P('vídeo de 30-60 s de los dos Gemelos a cámara: «algo grande llega, solo lo anunciamos dentro, entra» (por grabar)')}</div></div>
+{PORTADA_C if VIDEOS else ''}
   <div class="c-grid"><div class="hero" style="padding:0">{BADGE}{H1}{SUB}{CHIPS}</div>
     <div class="card" style="padding:22px">{FORM()}</div></div>
 </div>
@@ -230,6 +232,9 @@ E = HEAD('Zona Gemelos VIP · Nueva comunidad', 'E', E_CSS) + LOGO + f'''
 # ───────────────────────── GRACIAS (una por variante: a/gracias/ … d/gracias/) ─────────────────────────
 # Cada variante tiene la suya para que el píxel y la analítica cuenten el registro por variante (como MKT Hackers).
 # Su único trabajo: que el registrado ENTRE en la comunidad. Sin ese clic no le llega nada.
+VIDEO_GRACIAS = '<div class="foto" style="aspect-ratio:16/9;margin-top:36px">Vídeo de 30 s de los Gemelos: «entra y activa las notificaciones»<br>' + P('por grabar') + '</div>'
+
+
 def GRACIAS(v):
     return (HEAD(f'Zona Gemelos VIP · Último paso ({v})', f'{v}-gracias') + LOGO + f'''
 <main><div class="wrap hero estrecho">
@@ -242,7 +247,7 @@ def GRACIAS(v):
     <div class="card"><div class="n">02</div><h3>Activa las notificaciones</h3><p>Lo importante solo se anuncia dentro, y una vez.</p></div>
     <div class="card"><div class="n">03</div><h3>Guarda nuestro número</h3><p>Así te llegan los mensajes y no se pierden.</p></div>
   </div>
-  <div class="foto" style="aspect-ratio:16/9;margin-top:36px">Vídeo de 30 s de los Gemelos: «entra y activa las notificaciones»<br>{P('por grabar')}</div>
+{VIDEO_GRACIAS if VIDEOS else ''}
 </div></main>
 <script>
 var WHATSAPP = '{COMUNIDAD}';  // campaña de Funnelchat «Zona Gemelos VIP» (reparte entre comunidades, anti-bots)
@@ -254,9 +259,9 @@ document.getElementById('ir-wa').href = WHATSAPP;
 # ───────────────────────── ÍNDICE DE VISTA PREVIA ─────────────────────────
 VARS = [('a', 'A · Larga', 'MKT Hackers A', 'Botón que abre el formulario en un popup, qué hay dentro, quiénes somos, preguntas, y un botón entre cada bloque. Para tráfico frío (descripción de YouTube).'),
         ('b', 'B · Formulario arriba', 'MKT Hackers B', 'El formulario en la primera pantalla, ficha (gratis · WhatsApp · 25 de octubre), qué hay dentro y quiénes somos. Para tráfico mixto.'),
-        ('c', 'C · Vídeo arriba', 'Iman Gadzhi · AI Income Challenge', 'Vídeo de los Gemelos a lo ancho, titular y formulario al lado, qué hay dentro. Para quien llega desde un vídeo.'),
-        ('d', 'D · Exprés', 'MKT Hackers D', 'Una sola pantalla: titular, cuenta atrás al anuncio y formulario. Para tráfico caliente (base, stories, ManyChat).'),
-        ('e', 'E · Puente con vídeo (en la recámara)', 'redirección directa', 'Guardada para más adelante. Sin formulario: al entrar sale el vídeo de los Gemelos en un pop-up y el botón lleva directo a go.wha.link/zonagemelos. Para la primera redirección.')]
+        ('c', 'C · Vídeo arriba' if VIDEOS else 'C · Titular + formulario', 'Iman Gadzhi · AI Income Challenge', ('Vídeo de los Gemelos a lo ancho, titular' if VIDEOS else 'Sin vídeo de momento: titular') + ' y formulario al lado, qué hay dentro. Para quien llega desde un vídeo.'),
+        ('d', 'D · Exprés', 'MKT Hackers D', 'Una sola pantalla: titular, cuenta atrás al anuncio y formulario. Para tráfico caliente (base, stories, ManyChat).')] + ([
+        ('e', 'E · Puente con vídeo (en la recámara)', 'redirección directa', 'Guardada para más adelante. Sin formulario: al entrar sale el vídeo de los Gemelos en un pop-up y el botón lleva directo a go.wha.link/zonagemelos. Para la primera redirección.')] if VIDEOS else [])
 I = '''<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Zona Gemelos VIP · Landings A B C D E</title><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;800;900&family=Geist+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/zg.css"><link rel="icon" href="assets/media/g.png"></head><body>
@@ -269,7 +274,7 @@ I = '''<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="vi
 <p class="aviso" style="margin-top:30px">Las etiquetas amarillas ⇢ marcan lo que falta (foto, vídeos, enlace de WhatsApp). Se ocultan con <b>?publicar=1</b>. Sin <code>webhook</code> en <code>assets/zg.js</code> el formulario no envía nada: guarda en el navegador y salta a la página de gracias.</p>
 </div></main></body></html>'''
 
-for ruta, html in [('a/index.html', A), ('b/index.html', B), ('c/index.html', C), ('d/index.html', D), ('e/index.html', E), ('index.html', I)] + [(f'{v}/gracias/index.html', GRACIAS(v.upper())) for v in 'abcd']:
+for ruta, html in [('a/index.html', A), ('b/index.html', B), ('c/index.html', C), ('d/index.html', D), ('index.html', I)] + ([('e/index.html', E)] if VIDEOS else []) + [(f'{v}/gracias/index.html', GRACIAS(v.upper())) for v in 'abcd']:
     (R / ruta).parent.mkdir(parents=True, exist_ok=True)
     (R / ruta).write_text(html, encoding='utf-8')
     print('✓', ruta, f'{len(html) / 1024:.1f} KB')

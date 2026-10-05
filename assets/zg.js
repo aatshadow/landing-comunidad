@@ -2,12 +2,15 @@
    Lo que cambia de un lanzamiento a otro vive en CONFIG. */
 var CONFIG = {
   anuncio: '2026-10-25T20:00:00+02:00',     // cuándo se anuncia dentro (cuenta atrás de la D)
-  webhook: '',                               // ⇢ PENDIENTE: n8n → ActiveCampaign + ManyChat. Vacío = vista previa (no envía nada)
+  webhook: '/api/optin',                     // puente al CRM de Zona Gemelos (api/optin.js añade el token). Vacío = no envía nada
   gracias: 'gracias/'                        // cada variante tiene la suya: a/gracias/ … d/gracias/
 };
 
 (function () {
   var q = new URLSearchParams(location.search);
+  // la primera página por la que entró (con sus UTM), de dónde venía y cuándo: el CRM calcula el tiempo en la página
+  var ENTRADA = { landingPage: location.href, referrer: document.referrer, landingPageAt: new Date().toISOString() };
+  try { var g = JSON.parse(sessionStorage.getItem('zg_entrada') || 'null'); if (g) ENTRADA = g; else sessionStorage.setItem('zg_entrada', JSON.stringify(ENTRADA)); } catch (x) {}
   if (q.get('publicar') === '1') document.body.classList.add('publicar');
   var variante = document.body.dataset.variante || '?';
 
@@ -76,6 +79,16 @@ var CONFIG = {
         utm_source: q.get('utm_source') || '', utm_medium: q.get('utm_medium') || '', utm_campaign: q.get('utm_campaign') || '',
         utm_content: q.get('utm_content') || '', utm_term: q.get('utm_term') || '', enviado: new Date().toISOString()
       };
+      // con los nombres del contrato del webhook de opt-in (WEBHOOK-OPTIN-PARA-JUANE.md): así cada dato cae en su campo del CRM
+      datos.name = datos.nombre; datos.phone = datos.telefono;
+      datos.reason = 'Comunidad · nos conoce: ' + (datos.conoce || '—') + ' · se dedica a: ' + (datos.dedica || '—');
+      datos.utmSource = datos.utm_source; datos.utmMedium = datos.utm_medium; datos.utmCampaign = datos.utm_campaign;
+      datos.utmContent = datos.utm_content; datos.utmTerm = datos.utm_term;
+      datos.fbclid = q.get('fbclid') || ''; datos.gclid = q.get('gclid') || '';
+      datos.landingPage = ENTRADA.landingPage; datos.referrer = ENTRADA.referrer; datos.landingPageAt = ENTRADA.landingPageAt;
+      datos.submitPage = location.href; datos.submittedAt = datos.enviado;
+      datos.language = navigator.language || ''; datos.platform = navigator.platform || '';
+      datos.screenWidth = screen.width; datos.screenHeight = screen.height;
       var boton = form.querySelector('button[type=submit]'); boton.disabled = true; boton.style.opacity = .7;
       var sigue = function () { location.href = CONFIG.gracias + '?v=' + variante; };
       try { localStorage.setItem('zg_registro', JSON.stringify(datos)); } catch (x) {}

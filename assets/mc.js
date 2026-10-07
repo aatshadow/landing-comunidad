@@ -10,8 +10,9 @@ var CONFIG = {
   reason: 'masterclass_10nov',
   gracias: '/masterclass/gracias/',
   comunidad: 'https://go.wha.link/zonagemelos',  // comunidad de WhatsApp (Funnelchat, campaña 27070)
-  directo: '',          // ⇢ pendiente: plataforma del directo. Id de YouTube Live (11 caracteres), URL de Vimeo o enlace de Zoom
+  directo: '',          // ⇢ pendiente: ENLACE para entrar al directo (Zoom, YouTube Live…). La sala no lo aloja: el botón lleva ahí
   replay: '',           // ⇢ pendiente: id de YouTube / URL de Vimeo de la grabación
+  pildora: '',          // ⇢ pendiente: vídeo de la píldora (id de YouTube o URL de Vimeo)
   ofertaVisible: false, // la oferta de la sala se enseña cuando los Gemelos abran plazas (o con ?oferta=1)
   pago: '',             // ⇢ pendiente: pasarela (enlace de pago)
   agenda: ''            // ⇢ pendiente: herramienta de agenda (Calendly / Cal.com)
@@ -157,9 +158,19 @@ var CONFIG = {
     var tick = function () {
       var vivo = ZG_AHORA() >= new Date(CONFIG.masterclass).getTime();
       document.body.classList.toggle('es-vivo', vivo); document.body.classList.toggle('es-espera', !vivo);
-      if (vivo && !tick.hecho) { tick.hecho = true; monta(document.querySelector('.player[data-src=directo]'), CONFIG.directo); }
+
     };
     tick(); setInterval(tick, 1000);
+  }
+  /* la sala no aloja el directo: el botón lleva al enlace de la plataforma */
+  document.querySelectorAll('[data-entrar]').forEach(function (a) {
+    if (CONFIG.directo) { a.href = /^[\w-]{11}$/.test(CONFIG.directo) ? 'https://www.youtube.com/watch?v=' + CONFIG.directo : CONFIG.directo; a.target = '_blank'; a.rel = 'noopener'; var t = a.parentNode.querySelector('.pend'); t && t.remove(); }
+    else a.addEventListener('click', function (e) { e.preventDefault(); });
+  });
+  if (document.body.classList.contains('pildora')) {
+    monta(document.querySelector('.player[data-src=pildora]'), CONFIG.pildora);
+    // pasada la masterclass (+3 h), el botón lleva a la grabación
+    if (ZG_AHORA() > new Date(CONFIG.masterclass).getTime() + 3 * 36e5) document.querySelectorAll('[data-cta-pildora]').forEach(function (a) { a.href = ZG_UTM('/replay/'); a.firstChild.textContent = 'Ver la masterclass grabada '; });
   }
   if (esReplay) monta(document.querySelector('.player[data-src=replay]'), CONFIG.replay);
   if (CONFIG.ofertaVisible || q.get('oferta') === '1' || esReplay) document.body.classList.add('con-oferta');

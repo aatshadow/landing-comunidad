@@ -44,7 +44,8 @@ Mismo repo, mismo despliegue. Estilo y lógica comunes en `assets/mc.css` y `ass
 | `/masterclass/` | Registro. Larga: promesa, cuenta atrás, el reto de los 100K, la historia en 4 pasos, qué te vas a llevar, para quién es, creencias, quiénes somos, FAQ. El formulario (pop-up) manda a `/api/optin` con `reason: "masterclass_10nov"` y salta a gracias |
 | `/masterclass/gracias/` | «Tu plaza está reservada» + 3 pasos: comunidad de WhatsApp (`go.wha.link/zonagemelos` con los UTM) · calendario (Google + `.ics` con avisos 1 h y 10 min) · pase |
 | `/masterclass/pase/` | Entrada digital con el nombre del registro (localStorage) y cuenta atrás; «Descargar mi pase» genera un PNG en el navegador |
-| `/directo/` | Sala. Antes de la hora: cuenta atrás + recordatorio de comunidad. A la hora: reproductor + «EN DIRECTO». Debajo, la oferta (oculta hasta abrir plazas) |
+| `/pildora/` | Píldora: vídeo corto (`CONFIG.pildora`), 3 claves y CTA a la masterclass (pasada la masterclass +3 h, a `/replay/`) |
+| `/directo/` | Acceso al directo: NO aloja el directo, da el botón «Entrar al directo» con el enlace de `CONFIG.directo` (Zoom, YouTube Live…); cuenta atrás y a la hora «Estamos en directo». Antes: Sala. Antes de la hora: cuenta atrás + recordatorio de comunidad. A la hora: reproductor + «EN DIRECTO». Debajo, la oferta (oculta hasta abrir plazas) |
 | `/replay/` | Grabación + textos de los anuncios 1 y 2 + «Agenda una llamada» + oferta + cuenta atrás al cierre (17-11, medianoche) |
 
 Todo el contenido sale del documento maestro del lanzamiento (`lanzamiento-nov/LANZAMIENTO-FUENTE-DE-VERDAD.md`, fuera del repo).

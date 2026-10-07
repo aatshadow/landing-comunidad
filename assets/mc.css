@@ -403,3 +403,8 @@ body.con-oferta .oferta{display:block}
 @media (max-width:640px){.cols-ads{grid-template-columns:1fr!important}}
 body.es-espera .pill.estado-espera,body.es-vivo .vivo.estado-vivo{display:inline-flex}
 @media (max-width:640px){.player .vacio .play{display:none}.player .vacio{padding-top:52px}}
+
+body.es-vivo .vivo.estado-vivo{display:inline-flex!important}
+body.es-vivo [data-entrar]{animation:pulso 1.6s infinite}
+@keyframes pulso{0%,100%{box-shadow:0 10px 40px -10px rgba(199,179,141,.55)}50%{box-shadow:0 0 0 10px rgba(199,179,141,.15),0 10px 50px -6px rgba(199,179,141,.8)}}
+@media (max-width:640px){.pend{white-space:normal;max-width:100%;text-align:center;line-height:1.35}}
